@@ -1,14 +1,6 @@
 #!/usr/bin/python
 import json
 import sys
-base_path = 'message_base.json' #path to the message base
-final_font = { #varibale the will be add to base
-		"id":None,
-		"message":"",
-		"receiver_type":"",
-		"receiver":[]
-	}
-
 def query_yes_no(message): #for final check
 	yes = {'yes','y', 'ye', ''}
 	no = {'no','n'}
@@ -21,7 +13,7 @@ def query_yes_no(message): #for final check
 		else:
 			sys.stdout.write("Please respond with 'yes' or 'no'")	
 
-def find_last_id(dict): #find maximum id 
+def find_last_message_id(dict): #find maximum id 
 	max = 0
 	for i in range(len(dict['message_base'])):
 		if (dict['message_base'][i]['id'] > max):
@@ -54,28 +46,38 @@ def change_to_list(input): # use to turn 'receiver' input into a list
 			blank = blank + 1
 	return new_list
 
-## main function 
-load_data = get_json_data(base_path) #import the json data
-final_font['id'] = find_last_id(load_data) + 1 
-final_font['message'] = raw_input('message: ')
-final_font['receiver_type'] = raw_input('receiver_type(building/groups/user): ')
-while ((final_font['receiver_type'] != 'building') and (final_font['receiver_type'] != 'groups') and (final_font['receiver_type'] != 'user')):
-	print("Format must be wrong")
+## main function
+def add_message(): 
+	base_path = 'message_base.json' #path to the message base
+	final_font = { #varibale that will be add to base
+			"id":None,
+			"message":"",
+			"receiver_type":"",
+			"receiver":[]
+		}
+	load_data = get_json_data(base_path) #import the json data
+	final_font['id'] = find_last_message_id(load_data) + 1 
+	final_font['message'] = raw_input('message: ')
 	final_font['receiver_type'] = raw_input('receiver_type(building/groups/user): ')
-	print(final_font['receiver_type'])
 
-final_font['receiver'] = change_to_list(raw_input('receiver: ')) #has to be a list
+	while ((final_font['receiver_type'] != 'building') and (final_font['receiver_type'] != 'groups') and (final_font['receiver_type'] != 'user')):
+		print("Format must be wrong")
+		final_font['receiver_type'] = raw_input('receiver_type(building/groups/user): ')
 
-print("is this the message you want to import?") # final check
-print(final_font)
-final_check = query_yes_no("[y/n]")
+	final_font['receiver'] = change_to_list(raw_input('receiver: ')) #has to be a list
 
-if final_check: #after final check
-	load_data['message_base'].append(final_font)
-	try:	
-		write_json_data(load_data,base_path)
-		print("add message done")
-	except:
-		print("unexpected error")
-else:
-	print("Cancel adding message")
+	print("is this the message you want to import?") # final check
+	print(final_font)
+	final_check = query_yes_no("[y/n]")
+
+	if final_check: #after final check
+		load_data['message_base'].append(final_font)
+		try:	
+			write_json_data(load_data,base_path)
+			print("add message done")
+		except:
+			print("unexpected error")
+	else:
+		print("Cancel adding message")
+
+add_message()

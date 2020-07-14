@@ -1,0 +1,1 @@
+{"dev_base": [{"status": {"RefreshTimeStamp": 0, "value": 0, "lost": true, "error": false}, "class": "sensor", "enable": true, "id": 0, "name": "fire alarm"}, {"status": {"RefreshTimeStamp": 0, "value": 0, "lost": true, "error": false}, "class": "I/O", "enable": true, "id": 1, "name": "my first dev"}]}
