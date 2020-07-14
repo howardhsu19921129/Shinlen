@@ -16,16 +16,14 @@ while(True):
             cmd = "python list_dev.py"
             os.system(cmd)
         elif(select_action == '1'):
-            cmd = "python send_dev.py"
-            print('run ' + cmd)
-            #os.system(cmd)
-        elif(select_action == '2'):
             cmd = "python add_dev.py"
             os.system(cmd)
-        elif(select_action == '3'):
+        elif(select_action == '2'):
             cmd = "python del_dev.py"
-            print('run ' + cmd)
-            #os.system(cmd)
+            os.system(cmd)
+        elif(select_action == '3'):
+            cmd = "python edit_dev.py"
+            os.system(cmd)
         else:
             print('your select may be wrong.')
         select_action = None

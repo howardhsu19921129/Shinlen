@@ -14,19 +14,19 @@ while(True):
     else:
         if(select_action == '0'):
             cmd = "python list_event.py"
-            print('run' + cmd)
+            print('run ' + cmd)
             #os.system(cmd)
         elif(select_action == '1'):
             cmd = "python send_event.py"
-            print('run' + cmd)
+            print('run ' + cmd)
             #os.system(cmd)
         elif(select_action == '2'):
             cmd = "python add_event.py"
-            print('run' + cmd)
+            print('run ' + cmd)
             #os.system(cmd)
         elif(select_action == '3'):
             cmd = "python del_event.py"
-            print('run' + cmd)
+            print('run ' + cmd)
             #os.system(cmd)
         else:
             print('your select may be wrong.')

@@ -48,33 +48,33 @@ def find_last_dev_id(dict): #find maximum id
 		if (dict['dev_base'][i]['id'] > max):
 			max = dict['dev_base'][i]['id']
 	return max
+def add_dev():
+	load_data = get_json_data(base_path) #import the json data
+	final_font['id'] = find_last_dev_id(load_data) + 1
+	final_font['name'] = raw_input('name: ')
 
-load_data = get_json_data(base_path) #import the json data
-final_font['id'] = find_last_dev_id(load_data) + 1
-final_font['name'] = raw_input('name: ')
-
-final_font['class'] = raw_input('class("sensor" / "I/O"): ')
-while ((final_font['class'] != 'sensor') and (final_font['class'] != 'I/O')):
-	print("Format must be wrong")
 	final_font['class'] = raw_input('class("sensor" / "I/O"): ')
+	while ((final_font['class'] != 'sensor') and (final_font['class'] != 'I/O')):
+		print("Format must be wrong")
+		final_font['class'] = raw_input('class("sensor" / "I/O"): ')
 
-enable_select = query_yes_no("enable the dev? [y/n]")
-if not enable_select:
-	final_font['enable'] = False
+	enable_select = query_yes_no("enable the dev? [y/n]")
+	if not enable_select:
+		final_font['enable'] = False
 
-print("is this the message you want to import?") # final check
-print(final_font)
-final_check = query_yes_no("[y/n]")
+	print("is this the message you want to import?") # final check
+	print(final_font)
+	final_check = query_yes_no("[y/n]")
 
-if final_check: #after final check
-	load_data['dev_base'].append(final_font)
-	try:	
-		write_json_data(load_data,base_path)
-		print("add dev done")
-	except:
-		print("unexpected error")
-else:
-	print("Cancel adding dev")
+	if final_check: #after final check
+		load_data['dev_base'].append(final_font)
+		try:	
+			write_json_data(load_data,base_path)
+			print("add dev done")
+		except:
+			print("unexpected error")
+	else:
+		print("Cancel adding dev")
 
-
+add_dev()
 

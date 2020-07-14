@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import json
 import sys
-base_path = 'message_base.json' 
+
 
 def query_yes_no(message): #for final check
 	yes = {'yes','y', 'ye', ''}
@@ -40,21 +40,24 @@ def get_id_data_in_dict(input_dict,id):
 
     
 ##main function
-load_data = get_json_data(base_path)
-print_dict(load_data)
-select_id = int(raw_input("witch id do you want to remove?"))
-select_data = get_id_data_in_dict(load_data,select_id)
-if select_data != None:
+def del_message():
+	base_path = 'message_base.json' 
+	load_data = get_json_data(base_path)
+	print_dict(load_data)
+	select_id = int(raw_input("witch id do you want to remove? "))
+	select_data = get_id_data_in_dict(load_data,select_id)
+	if select_data != None:
 
-	if query_yes_no("is this the message you want to remove? y/n"):
-		load_data["message_base"].remove(select_data)
-		try:
-			write_json_data(load_data, base_path)
-			print("The messege has been removed")
-		except:
-			print("unexpected error")
-
+		if query_yes_no("is this the message you want to remove? y/n"):
+			load_data["message_base"].remove(select_data)
+			try:
+				write_json_data(load_data, base_path)
+				print("The messege has been removed ")
+			except:
+				print("unexpected error")
+		else:
+			print("Cancel del message")
 	else:
-		print("Cancel del message")
-else:
-	print("The id is not exist")
+		print("The id is not exist")
+
+del_message()

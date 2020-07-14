@@ -29,5 +29,4 @@ while(True):
             os.system(cmd)
         else:
             print('your select may be wrong.')
-
         select_action = None
