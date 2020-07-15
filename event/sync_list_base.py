@@ -50,8 +50,8 @@ def mark_not_found_in_folder(unfound_name, list_path):
 ## main function
 now_cd = os.getcwd()
 
-# load the folder
-folder_list = [f for f in os.listdir(now_cd + "/action_base") if fnmatch.fnmatch(f, '*.py')]
+
+folder_list = [f for f in os.listdir(now_cd + "/action_base") if fnmatch.fnmatch(f, '*.py')] # load the folder
 
 old_event_list = []
 list_path = "event_list.json"
@@ -64,7 +64,7 @@ for item in folder_list: # find if any add
 		add_new_discoverd(item, list_path)
 		print("add "+ item + " in list")
 
-for item in old_event_list: # find if any del
+for item in old_event_list: # find if any del, mark error
 	if item not in folder_list:
 		mark_not_found_in_folder(item, list_path)
 		print("mark "+ item + " error")

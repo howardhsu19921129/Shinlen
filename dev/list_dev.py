@@ -10,8 +10,8 @@ def get_json_data(json_path):
 	return dict
 
 def print_dict(dict):
-    for i in dict['dev_base']:
-        print(i)
+	for i in dict['dev_base']:
+		print(i)
 
 def list_message():##main function
 	base_path = 'dev_base.json' 
