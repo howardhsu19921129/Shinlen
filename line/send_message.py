@@ -15,8 +15,8 @@ def get_json_data(json_path):
 	return dict
 
 def print_dict(dict):
-    for i in dict['message_base']:
-        print(i)
+	for i in dict['message_base']:
+		print(i)
 
 def get_id_data_in_dict(input_dict,id):
 	target = id
@@ -37,26 +37,27 @@ def query_yes_no(message): #for final check
 		else:
 			sys.stdout.write("Please respond with 'yes' or 'no'")	
 
-def sent_messsege_via_notify(message, info):
-    url = info['ip']
-
-    LineNotifyToken = info['token']
-    LineNotifyMessage = message['message']
-    headers = {
-            "Content-Type":"application/x-www-form-urlencoded",          
-            "Authorization":"Bearer " + LineNotifyToken
-        }
-    body = "message=" + LineNotifyMessage
-    result = requests.post(url, data = body, headers = headers)
-    print 'Status Code = ' + str(result.status_code) + ', Response = ' + result.text
+def sent_messsege_via_notify(message, info): #input 2 dict
+	url = info['ip']
+	LineNotifyToken = info['token']
+	LineNotifyMessage = message['message']
+	headers = {
+			"Content-Type":"application/x-www-form-urlencoded",          
+			"Authorization":"Bearer " + LineNotifyToken
+		}
+	body = "message=" + LineNotifyMessage
+	result = requests.post(url, data = body, headers = headers)
+	print 'Status Code = ' + str(result.status_code) + ', Response = ' + result.text
 
 
 ##main function
-info = get_json_data(info_path)
-load_data = get_json_data(base_path)
+
+info_path = "info.json"
+base_path = 'message_base.json'
+
 print_dict(load_data)
 select_id = int(raw_input("witch id do you want to sent?"))
+info = get_json_data(info_path)
+load_data = get_json_data(base_path)
 print(get_id_data_in_dict(load_data,select_id))
 sent_messsege_via_notify(get_id_data_in_dict(load_data,select_id), info)
-
-

@@ -77,4 +77,3 @@ def add_dev():
 		print("Cancel adding dev")
 
 add_dev()
-
