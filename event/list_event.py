@@ -11,3 +11,7 @@ def list_action(list_path):
 	load_data = get_json_data(list_path)
 	for i in load_data['event_list']:
 		print(i)
+
+
+list_path = 'event_list.json' 
+list_action(list_path)
