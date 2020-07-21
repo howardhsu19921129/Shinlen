@@ -1,0 +1,11 @@
+{    
+    "auto_trigger_list":[
+        {
+            "dev_id":1,
+            "dev_item":"value",
+            "item_value":9,
+            "trigger_id":1,
+            "enable":true
+        }
+    ]
+}
