@@ -5,7 +5,7 @@
                 "RefreshTimeStamp": 0,
                 "lost": true,
                 "value": 9,
-                "error": false
+                "error": true
             },
             "enable": true,
             "id": 1,
@@ -17,7 +17,7 @@
                 "RefreshTimeStamp": 0,
                 "value": 0,
                 "lost": true,
-                "error": false
+                "error": true
             },
             "id": 2,
             "enable": true,
